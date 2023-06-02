@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2 Pixel Marquee</title>
+
+	<style>
+		/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+		html,
+		body,
+		div,
+		span,
+		applet,
+		object,
+		iframe,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		blockquote,
+		pre,
+		a,
+		abbr,
+		acronym,
+		address,
+		big,
+		cite,
+		code,
+		del,
+		dfn,
+		em,
+		img,
+		ins,
+		kbd,
+		q,
+		s,
+		samp,
+		small,
+		strike,
+		strong,
+		sub,
+		sup,
+		tt,
+		var,
+		b,
+		u,
+		i,
+		center,
+		dl,
+		dt,
+		dd,
+		ol,
+		ul,
+		li,
+		fieldset,
+		form,
+		label,
+		legend,
+		table,
+		caption,
+		tbody,
+		tfoot,
+		thead,
+		tr,
+		th,
+		td,
+		article,
+		aside,
+		canvas,
+		details,
+		embed,
+		figure,
+		figcaption,
+		footer,
+		header,
+		hgroup,
+		menu,
+		nav,
+		output,
+		ruby,
+		section,
+		summary,
+		time,
+		mark,
+		audio,
+		video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+
+		/* HTML5 display-role reset for older browsers */
+		article,
+		aside,
+		details,
+		figcaption,
+		figure,
+		footer,
+		header,
+		hgroup,
+		menu,
+		nav,
+		section {
+			display: block;
+		}
+
+		body {
+			line-height: 1;
+		}
+
+		ol,
+		ul {
+			list-style: none;
+		}
+
+		blockquote,
+		q {
+			quotes: none;
+		}
+
+		blockquote:before,
+		blockquote:after,
+		q:before,
+		q:after {
+			content: '';
+			content: none;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		/* @font-face {
+			font-family: "2 pixel";
+			src: url("2-pixel-high-webfont.woff") format("woff"),
+		}
+
+		html {
+			font-family: "2 pixel", sans-serif;
+			font-size: 100px;
+			letter-spacing: 0;
+			-webkit-font-smoothing: subpixel-antialiased;
+			font-smoothing: subpixel-antialiased;
+			text-rendering: optimizeLegibility;
+		} */
+	</style>
+
+	<!-- <link rel="stylesheet" href="specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" /> -->
+	<link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+
+	<style type="text/css">
+		body {
+			font-family: '2_pixel_highregular';
+			font-size: 300px;
+			line-height: 1;
+		}
+
+		.box9x9 {
+			width: 900px;
+			height: 900px;
+			word-wrap: break-word;
+			margin: 100px 0 0 100px;
+			position: relative;
+			overflow: hidden;
+			display: inline-block;
+		}
+
+		.outer-box {
+			width: 800px;
+			height: 800px;
+			word-wrap: hidden;
+			background: #eee;
+			border: 10px solid #ddd;
+			/* margin: 100px 0 0 100px; */
+			position: relative;
+			overflow: hidden;
+			display: inline-block;
+		}
+
+		.box8x8 {
+			position: absolute;
+			width: 800px;
+			height: 800px;
+			background: #eee;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+
+		.text {
+			position: relative;
+			top: -96px;
+		}
+
+		.marquee-container {
+			position: relative;
+			top: -96px;
+		}
+
+		#scroll-text {
+			display: block;
+			white-space: nowrap;
+			-moz-transform: translateX(100%);
+			-webkit-transform: translateX(100%);
+			transform: translateX(100%);
+
+			-moz-animation: my-animation 8s steps(8, end) infinite;
+			-webkit-animation: my-animation 8s steps(8, end) linear infinite;
+			animation: my-animation 8s steps(8, end) infinite;
+		}
+
+		@-moz-keyframes my-animation {
+			from {
+				-moz-transform: translateX(0%);
+			}
+
+			to {
+				-moz-transform: translateX(-100%);
+			}
+		}
+
+		@-webkit-keyframes my-animation {
+			from {
+				-webkit-transform: translateX(0%);
+			}
+
+			to {
+				-webkit-transform: translateX(-100%);
+			}
+		}
+
+		@keyframes my-animation {
+			from {
+				-moz-transform: translateX(0%);
+				-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+			}
+
+			to {
+				-moz-transform: translateX(-100%);
+				-webkit-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<h1>demo</h1>
+	<!-- <span>s ss</span>
+	<span>ssss</span> -->
+	<div class="box9x9">
+		<span class="text" id="scroll-text">hi i am hakan</span>
+		<div class="box8x8"></div>
+	</div>
+
+	<div class="outer-box">
+		<div class="marquee-container">
+
+			<span id="scroll-text">Hi I am a marquee</span>
+			<span id="scroll-text">am a marquee</span>
+			<span id="scroll-text">a marquee</span>
+		</div>
+
+	</div>
+
+	<div class="box9x9">
+		<span class="text">i i am hakan</span>
+		<div class="box8x8"></div>
+	</div>
+
+	<marquee behavior="" direction="" scrollamount="100" scrolldelay="1000">Hi I am a marquee</marquee>
+</body>
+
+</html>
